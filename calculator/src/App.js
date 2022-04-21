@@ -1,4 +1,3 @@
-// import Calculator from './component/Calculator';
 import './App.css';
 import Calculator from './component/Calculator';
 
