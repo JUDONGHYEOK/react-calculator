@@ -111,7 +111,7 @@ export default class Calculator extends Component {
           </button>
         </div>
         <div className="operations subgrid">
-          {[...Object.values(CALCULATOR.OPERATORS)].map((operator, idx) => (
+          {Object.values(CALCULATOR.OPERATORS).map((operator, idx) => (
             <button key={idx} className="operation" onClick={this.calculate}>
               {operator}
             </button>
