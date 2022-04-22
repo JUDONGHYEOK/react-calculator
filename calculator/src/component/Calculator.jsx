@@ -51,7 +51,10 @@ export default class Calculator extends Component {
   calculate = (e) => {
     if (!Number.isFinite(this.state.prevNumber)) return;
 
-    if (this.state.nextNumber === null || this.state.operator === '=') {
+    if (
+      this.state.nextNumber === null ||
+      this.state.operator === CALCULATOR.OPERATORS.EQUAL
+    ) {
       this.setState({ operator: e.target.textContent });
       return;
     }
@@ -108,7 +111,7 @@ export default class Calculator extends Component {
           </button>
         </div>
         <div className="operations subgrid">
-          {[...CALCULATOR.OPERATOR].map((operator, idx) => (
+          {[...Object.values(CALCULATOR.OPERATORS)].map((operator, idx) => (
             <button key={idx} className="operation" onClick={this.calculate}>
               {operator}
             </button>

@@ -1,14 +1,15 @@
+import { CALCULATOR } from '../constant';
 export const calculator = {
-  '+': function (a, b) {
+  [CALCULATOR.OPERATORS.ADD]: function (a, b) {
     return a + b;
   },
-  '-': function (a, b) {
+  [CALCULATOR.OPERATORS.MINUS]: function (a, b) {
     return a - b;
   },
-  X: function (a, b) {
+  [CALCULATOR.OPERATORS.MULTIPLY]: function (a, b) {
     return a * b;
   },
-  '/': function (a, b) {
+  [CALCULATOR.OPERATORS.DIVIDE]: function (a, b) {
     return a / b;
   },
 };
