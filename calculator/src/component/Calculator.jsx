@@ -3,8 +3,9 @@ import { CALCULATOR, ERROR_MESSAGE, LOCAL_STORAGE_KEY } from '../constant';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useCalculator } from '../hooks/useCalculator';
 import DigitButton from './DigitButton';
+import ModifierButton from './ModifierButton';
 
-export default function CalculatorByFunction() {
+export default function Calculator() {
   const [statement, dispatch] = useCalculator();
 
   useLocalStorage(LOCAL_STORAGE_KEY, JSON.stringify(statement));
@@ -30,14 +31,13 @@ export default function CalculatorByFunction() {
         ))}
       </div>
       <div className="modifiers subgrid">
-        <button
-          className="modifier"
+        <ModifierButton
           onClick={() => {
             dispatch({ type: 'INITIALIZE' });
           }}
         >
           AC
-        </button>
+        </ModifierButton>
       </div>
       <div className="operations subgrid">
         {Object.values(CALCULATOR.OPERATORS).map((operator, idx) => (
