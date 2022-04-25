@@ -4,6 +4,7 @@ import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useCalculator } from '../hooks/useCalculator';
 import DigitButton from './DigitButton';
 import ModifierButton from './ModifierButton';
+import OperationButton from './OperationButton';
 
 export default function Calculator() {
   const [statement, dispatch] = useCalculator();
@@ -41,15 +42,14 @@ export default function Calculator() {
       </div>
       <div className="operations subgrid">
         {Object.values(CALCULATOR.OPERATORS).map((operator, idx) => (
-          <button
+          <OperationButton
             key={idx}
-            className="operation"
             onClick={(e) => {
               dispatch({ type: 'CALCULATE', payload: e.target.textContent });
             }}
           >
             {operator}
-          </button>
+          </OperationButton>
         ))}
       </div>
     </div>
