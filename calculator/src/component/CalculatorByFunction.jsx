@@ -2,6 +2,7 @@ import './Calculator.css';
 import { CALCULATOR, ERROR_MESSAGE, LOCAL_STORAGE_KEY } from '../constant';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useCalculator } from '../hooks/useCalculator';
+import DigitButton from './DigitButton';
 
 export default function CalculatorByFunction() {
   const [statement, dispatch] = useCalculator();
@@ -18,15 +19,14 @@ export default function CalculatorByFunction() {
       </h1>
       <div className="digits flex">
         {new Array(CALCULATOR.MAX_NUMBER + 1).fill().map((_, idx) => (
-          <button
-            className="digit"
+          <DigitButton
             key={CALCULATOR.MAX_NUMBER - idx}
-            onClick={(e) => {
-              dispatch({ type: 'CHANGE_NUMBER', payload: e.target.textContent });
-            }}
+            onClick={(e) =>
+              dispatch({ type: 'CHANGE_NUMBER', payload: e.target.textContent })
+            }
           >
             {CALCULATOR.MAX_NUMBER - idx}
-          </button>
+          </DigitButton>
         ))}
       </div>
       <div className="modifiers subgrid">
@@ -46,7 +46,6 @@ export default function CalculatorByFunction() {
             className="operation"
             onClick={(e) => {
               dispatch({ type: 'CALCULATE', payload: e.target.textContent });
-              console.log(statement);
             }}
           >
             {operator}
