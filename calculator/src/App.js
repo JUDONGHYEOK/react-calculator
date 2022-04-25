@@ -1,11 +1,11 @@
 // import Calculator from './component/Calculator';
 import './App.css';
-import CalculatorByFunction from './component/CalculatorByFunction';
+import Calculator from './component/Calculator';
 
 const App = () => {
   return (
     <div id="app">
-      <CalculatorByFunction />
+      <Calculator />
     </div>
   );
 };

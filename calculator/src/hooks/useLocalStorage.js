@@ -1,23 +1,24 @@
-import { useCallback, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 export const useLocalStorage = (key, value) => {
+  const storedData = useRef(value);
   useEffect(() => {
     window.addEventListener('beforeunload', confirmExit);
+    window.addEventListener('unload', handleSave);
+
     return () => {
       window.removeEventListener('beforeunload', confirmExit);
+      window.removeEventListener('unload', handleSave);
     };
   }, []);
 
-  const handleSave = useCallback(() => {
-    localStorage.setItem(key, value);
+  useEffect(() => {
+    storedData.current = value;
   }, [value]);
 
-  useEffect(() => {
-    window.addEventListener('unload', handleSave);
-    return () => {
-      window.removeEventListener('unload', handleSave);
-    };
-  }, [handleSave]);
+  const handleSave = () => {
+    localStorage.setItem(key, storedData.current);
+  };
 
   const confirmExit = (e) => {
     e.preventDefault();
