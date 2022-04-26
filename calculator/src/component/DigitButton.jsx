@@ -10,7 +10,7 @@ function DigitButton({ onClick, children }) {
 
 DigitButton.propTypes = {
   onClick: PropTypes.func,
-  children: PropTypes.number,
+  children: PropTypes.element,
 };
 
 export default DigitButton;
